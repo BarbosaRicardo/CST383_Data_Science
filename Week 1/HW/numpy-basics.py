@@ -5,10 +5,10 @@ Homework 1
 
 import numpy as np
 
-#z = 2.5
-#s1 = 'foo'
-#s2 = 'bar'
-#s = 'snorkle'
+# z = 2.5
+# s1 = 'foo'
+# s2 = 'bar'
+# s = 'snorkle'
 
 
 # In this homework you will write Python and NumPy code, leading up
@@ -294,7 +294,8 @@ np.sqrt((parts[0, 0] - parts[1, 0])**2 + (parts[0, 1] - parts[1, 1])**2)
 
 def distance(width, length, parts):
     # your code here
-    return np.array(parts - (width, length))
+    return np.array(np.sqrt((parts[:,0] - width)**2 + (parts[:,1] - length)**2))
+
 #test = distance(3.0,4.8, parts)
 
 # @ 25
@@ -312,17 +313,21 @@ def distance(width, length, parts):
 #
 # (define function most_similar_part)
 
-
 def most_similar_part(width, length, parts):
     # your code here
     # calculates the distances
     dis = distance(width, length, parts)
-    # creates the mask based on the both cols being withing +/- 0.1
-    mask = (dis < 0.2) & (dis > -0.2)
+    # calculates min distance
+    min_dis = np.min(dis)
+    # compares distances to min distance
+    dis_diff = dis - min_dis
+    # creates the mask based on the both cols being withing +/- 0.01
+    mask = dis_diff <= 0.01
     # return the index(s) of where sum of a row is 2
-    index = np.where(np.sum(mask, axis=1) == 2)
+    index = np.where(mask == True)
     # returns a list using the data from index
     return part_num[index[0]].tolist()
 
-#most_similar_part(3.0, 4.8, parts)
-#most_similar_part(3.2, 5.3, parts)
+# most_similar_part(3.0, 4.8, parts)
+# most_similar_part(3.2, 5.3, parts)
+# most_similar_part(3.0, 5.6, parts)
