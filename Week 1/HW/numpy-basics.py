@@ -35,31 +35,31 @@ import numpy as np
 
 # Please ask if anything is not clear!
 
-# @ 1
+#@ 1
 # assign the value of variable z to variable x
 # assume z is defined
 # (assignment to x)
 x = z
 
-# @ 2
+#@ 2
 # assign 'hello' to variable msg
 # (assignment to msg)
 msg = 'hello'
 
-# @ 3
+#@ 3
 # check whether variable msg is a string
 # Example: if msg = 5.0, the result should be False
 # assume msg is defined
 # (write an expression)
 True if type(msg) == str else False
 
-# @ 4 compute the result of squaring x
+#@ 4 compute the result of squaring x
 # Example: if x is 2.5, the result should be 6.25
 # assume x is defined
 # (write an expression)
 x**2
 
-# @ 5
+#@ 5
 # compute the length of the string obtained by appending strings
 # s1 and s2, with a space between them
 # Example: if s1 is 'foo', and s2 is 'bar', the result should be 7
@@ -67,14 +67,14 @@ x**2
 # (write an expression)
 len(s1 + ' ' + s2)
 
-# @ 6 compute the substring consisting of the 2nd-4th characters of string s
+#@ 6 compute the substring consisting of the 2nd-4th characters of string s
 # Example: if s is 'snorkel', the result should be 'nor'.
 # assume s is defined
 # (write an expression)
 #s = '1234'
 s[1:4]
 
-# @ 7
+#@ 7
 # In one of the first lectures of class, we looked at creating a
 # system to identify the part number of a transmission part, based on
 # width and length measurements (the "features" of the part).  Here
@@ -105,13 +105,13 @@ s[1:4]
 # (assignment to width)
 width = np.array([3.1, 3.0, 3.0, 3.1, 3.2, 3.2, 3.4, 3.4, 3.3])
 
-# @ 8
+#@ 8
 # Repeat the previous problem, but create a NumPy array 'length'
 # that contains the length values in the data.
 # (assignment to length)
 length = np.array([5.2, 5.3, 5.2, 4.8, 4.9, 4.8, 5.6, 5.5, 5.4])
 
-# @ 9
+#@ 9
 # Compute a numpy array containing the square root of every element
 # in array 'length'.
 # Do not use a loop.
@@ -121,27 +121,27 @@ length = np.array([5.2, 5.3, 5.2, 4.8, 4.9, 4.8, 5.6, 5.5, 5.4])
 # (write an expression)
 np.sqrt(length)
 
-# @ 10
+#@ 10
 # write an expression to compute the average value in the array 'width'
 # You can assume 'width' is non-empty and numeric.
 # assume 'width' is defined
 # (write an expression)
 np.mean(width)
 
-# @ 11
+#@ 11
 # write an expression to check that arrays 'width' and 'length' have
 # the same number of elements
 # assume 'width' and 'length' are defined
 # (write an expression)
 True if width.size == length.size else False
 
-# @ 12
+#@ 12
 # write an expression to compute the maximum value in array 'length'
 # assume length is defined
 # (write an expression)
 np.max(length)
 
-# @ 13
+#@ 13
 # create a NumPy array 'part_num' containing the part numbers in
 # the data set shown above, from top to bottom.
 # Example: part_num[3] should be 'part2'.
@@ -167,7 +167,7 @@ part_num = np.array(['part1',
                      'part3',
                      'part3', ])
 
-# @ 14
+#@ 14
 # create a Boolean array 'mask' that, for each element in array 'width',
 # is True if the value is greater than 3.15, else False.
 # Example: mask[8] should be True
@@ -175,14 +175,14 @@ part_num = np.array(['part1',
 # (assignment to mask)
 mask = np.array(width > 3.15)
 
-# @ 15
+#@ 15
 # using the variable 'mask' just defined, compute an array
 # of the part numbers of the parts for which the value of mask is True
 # assume array 'mask' and array 'part_num' are defined
 # (write an expression)
 part_num[mask]
 
-# @ 16
+#@ 16
 # using 'mask' again, compute the fraction of values in mask
 # that are True.  You code should work correctly as long as 'mask'
 # is a boolean array.
@@ -193,7 +193,7 @@ part_num[mask]
 # (write an expression)
 np.count_nonzero(mask) / mask.size
 
-# @ 17
+#@ 17
 # write an expression that gives the values in array 'width'
 # that correspond to the values in array 'length' that are
 # less than 5.0.  Your code should work for any numeric
@@ -204,7 +204,7 @@ np.count_nonzero(mask) / mask.size
 # (write an expression)
 width[length < 5.0]
 
-# @ 18
+#@ 18
 # compute the mean-zeroed version of width by subtracting
 # the average value of 'width' from each element of 'width'.
 # Do not use a loop, and do not modify 'width'.
@@ -214,7 +214,7 @@ width[length < 5.0]
 # (write an expression)
 width - width.mean()
 
-# @ 19
+#@ 19
 # compute a '0-1 scaled' version of array 'length' by subtracting
 # the minimum value of length from each element, and then
 # dividing each element in the result by the difference between
@@ -227,7 +227,7 @@ width - width.mean()
 # (write an expression)
 (length - np.min(length)) / (np.max(length) - np.min(length))
 
-# @ 20
+#@ 20
 # create a 1D NumPy array 'parts' that contains the 'width'
 # values followed by the 'length' values.
 # Example: The first values of 'parts' should be 3.1, 3.0, 3.0
@@ -236,7 +236,7 @@ width - width.mean()
 # (assignment to parts)
 parts = np.concatenate((width, length))
 
-# @ 21
+#@ 21
 # reshape the parts array so that it is a 2D NumPy array, with
 # width values in column 1 and length values in column 2.  You
 # can assume that 'parts' has 18 elements in it.  Be careful
@@ -248,7 +248,7 @@ parts = np.concatenate((width, length))
 #parts = parts.reshape(2,-1).transpose()
 parts = parts.reshape(-1, 2, order='F')
 
-# @ 22
+#@ 22
 # write an expression to get the all rows of parts after
 # the first two rows.
 # Example: the first row of your output should be [3., 5.2]
@@ -264,7 +264,7 @@ parts[2:, ]
 # value on the y axis.  Then two parts are very similar
 # if the distance between them is small.
 
-# @ 23
+#@ 23
 # compute the Euclidean distance between the
 # first two rows of 'parts'.  Given two points (x1, y1) and
 # (x2, y2), the Euclidean distance between them is the
@@ -278,7 +278,7 @@ parts[2:, ]
 # (write an expression)
 np.sqrt((parts[0, 0] - parts[1, 0])**2 + (parts[0, 1] - parts[1, 1])**2)
 
-# @ 24
+#@ 24
 # Suppose we find a part and measure it. We find the width is 3.15 and
 # the length is 5.35.  How similar is it to the parts given in the rows
 # of 'parts'?  Define a function 'distance' that has three parameters:
@@ -298,7 +298,7 @@ def distance(width, length, parts):
 
 #test = distance(3.0,4.8, parts)
 
-# @ 25
+#@ 25
 # Define a function 'most_similar_part' that, given a width and a length
 # of an unknown part, returns the part number of the part in array 'parts'
 # that is most similar to it.  Sometimes multiple parts will have a
