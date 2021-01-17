@@ -105,52 +105,52 @@ df.loc[df['mpg'] > df['mpg'].max()*0.8, 'mpg']
 # Hint: you can use the same boolean mask you used in the last
 # problem, but this time use it with the Series of the qsec
 # column values.
-
+df.loc[df['mpg'] > df['mpg'].max()*0.8, 'qsec']
 
 #@ 8
 # Are the gas guzzlers a lot faster than the high MPG cars?
 # Compute a Series containing the qsec values for the cars that
 # have MPG values less than 1.2 times the minimum MPG value
 # in the data set.
-
+df.loc[df['mpg'] < df['mpg'].min()*1.2, 'qsec']
 
 #@ 9
 # Do cars with a small number of forward gears have high MPG?
 # Compute a Series containing values in the mpg column for which the value in the 'gear' column is 3
 # hint: index into a series of the mpg values using a boolean mask based on a series of the gear values
-
+df.loc[df['gear'] == 3, 'mpg']
 
 #@ 10
 # What about cars with a large number of forward gears?
 # Compute a Series containing values in the mpg column for which the value in the 'gear' column is 5
-
+df.loc[df['gear'] == 5, 'mpg']
 
 #@ 11
 # On average, what's the MPG for cars with 3 forward gears?
 # Compute the average value of the mpg values for which the corresponding 'gear' value is 3
-
+df.loc[df['gear'] == 3, 'mpg'].mean()
 
 #@ 12
 # On average, what's the MPG for cars with 5 forward gears?
 # Compute the average value of the mpg values for which the corresponding 'gear' value is 5
-
+df.loc[df['gear'] == 5, 'mpg'].mean()
 
 #@ 13
 # Are lighter cars faster?
 # Compute the average 1/4 mile time for cars with greater than average weight.
-
+df.loc[df['wt'] > df['wt'].mean(), 'qsec'].mean()
 
 #@ 14
 # Now compare with the speed of lighter cars.
 # Compute the average 1/4 mile time for cars with less than average weight.
-
+df.loc[df['wt'] < df['wt'].mean(), 'qsec'].mean()
 
 #@ 15
 # Is there a big difference in power between cars with V6 and V8 engines?
 # Calculate the average hp value for cars where vs is 0 and cyl is 8.
-
+df.loc[(df['vs'] == 0) & (df['cyl'] == 8), 'hp'].mean()
 
 #@ 16
 # For comparison, what's the power for cars with V6 engines?
 # Calculate the average hp value for cars where vs is 0 and cyl is 6.
-
+df.loc[(df['vs'] == 0) & (df['cyl'] == 6), 'hp'].mean()
