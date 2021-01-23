@@ -269,7 +269,7 @@ df[['Median', 'P25th', 'P75th']].sort_values(by='Median', ascending=True).head(1
 # COSMETOLOGY SERVICES AND CULINARY ARTS                               0.702569
 # NUCLEAR, INDUSTRIAL RADIOLOGY, AND BIOLOGICAL TECHNOLOGIES           0.697070
 # ELECTRICAL, MECHANICAL, AND PRECISION TECHNOLOGIES AND PRODUCTION    0.681314
-
+(df['Non_college_jobs'] / df['Total']).sort_values(ascending=False).head(10)
 
 #@ 19
 # For each major category, compute the total number of people
