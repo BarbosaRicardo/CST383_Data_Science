@@ -280,7 +280,7 @@ df[['Median', 'P25th', 'P75th']].sort_values(by='Median', ascending=True).head(1
 # Major_category
 # Business                               1302376.0
 # Humanities & Liberal Arts               713468.0
-
+df.groupby(by="Major_category").sum()['Total'].sort_values(ascending=False)
 
 #@ 20
 # For each major category, compute the fraction of people
@@ -291,7 +291,7 @@ df[['Median', 'P25th', 'P75th']].sort_values(by='Median', ascending=True).head(1
 # Business                               0.192328
 # Humanities & Liberal Arts              0.105361
 # Education                              0.082569
-
+(df.groupby(by="Major_category").sum()['Total'] / df['Total'].sum()).sort_values(ascending=False)
 
 #@ 21
 # Compute the number of majors associated with each major
@@ -301,14 +301,15 @@ df[['Median', 'P25th', 'P75th']].sort_values(by='Median', ascending=True).head(1
 # Humanities & Liberal Arts              15
 # Biology & Life Science                 14
 #
-
+df['Major_category'].value_counts()
 
 #@ 22
 # Add a new variable 'HighShareWomen' to the data frame.
 # This variable should be True if ShareWomen > 0.50, and
 # False otherwise.  Then compute the first five values in
 # the HishShareWoman column.
-
+df['HighShareWomen'] = df['ShareWomen'] > 0.50
+df['HighShareWomen'].head(5)
 
 ###############################################################
 # In the remaining problems you can assume that df additionally
@@ -319,7 +320,7 @@ df[['Median', 'P25th', 'P75th']].sort_values(by='Median', ascending=True).head(1
 #@ 23
 # Compute the fraction of majors that have a high share of women.
 # Your result should be a number close to 0.56
-
+df['HighShareWomen'].sum() / df['HighShareWomen'].size
 
 #@ 24
 # For each major, compute the fraction of those working in
@@ -332,7 +333,7 @@ df[['Median', 'P25th', 'P75th']].sort_values(by='Median', ascending=True).head(1
 # MISCELLANEOUS FINE ARTS                   0.226048
 # CLINICAL PSYCHOLOGY                       0.219168
 # STUDIO ARTS                               0.211227
-
+(df['Low_wage_jobs'] / df['Total']).sort_values(ascending=False).head(10)
 
 #@ 25
 # For each major category, compute the maximum of the median
