@@ -121,20 +121,41 @@ cyl_counts = df['cyl'].value_counts()
 #%%
 # Using matplot lib, make a bar plot showing the number
 # of cars for each number of cylinders
-
+labels = cyl_counts.index 
+y_pos = np.arange(len(labels))
+plt.bar(y_pos, cyl_counts)
+plt.xticks(y_pos, labels)
 
 #%%
 # improve your plot by adding title, x and y axis labels, and the color
 # of your choice
+labels = cyl_counts.index 
+y_pos = np.arange(len(labels))
+plt.bar(y_pos, cyl_counts, color="darkslateblue")
+plt.xticks(y_pos, labels)
+plt.title("Counts by Cylinder")
+plt.xlabel("# Cylinders")
+plt.ylabel("Counts")
 
 #%%
 # Repeat the process, but this time use Seaborn to create your
 # barplot
 # Note: you can use plt.title() to give your plot a title
+sns.countplot(df['cyl'])
+plt.title("Counts by Cylinder")
 
 #%%
 # Create a histogram of mpg values, using matplotlib, then
 # seaborn, then pandas
+
+# Matplotlib
+plt.hist(df['mpg'])
+
+# Pandas
+df['mpg'].plot.hist()
+
+# Seaborn
+sns.distplot(df['mpg'])
 
 #%%
 # If you still have time, experiment with seaborn and pandas plots.
