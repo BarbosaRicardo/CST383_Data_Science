@@ -158,7 +158,7 @@ np.sum(unemp < 0.05)
 # (note: 0.06, not 0.05)
 # Your result will be a value between 0 and 1.
 # assume unemp is defined
-np.sum(unemp < 0.06) / unemp.size #******************************************#
+np.sum(unemp < 0.06) / unemp.size 
 
 #@ 8
 # Compute the fraction of majors that have unemployment levels lower than the
@@ -344,7 +344,7 @@ df['HighShareWomen'].sum() / df['HighShareWomen'].size
 # Engineering                            110000
 # Physical Sciences                       62000
 # Business                                62000
-
+df.groupby('Major_category')['Median'].max().sort_values(ascending=False)
 
 #@ 26
 # Compute the average median salary for each major category,
@@ -354,7 +354,7 @@ df['HighShareWomen'].sum() / df['HighShareWomen'].size
 # Psychology & Social Work               30100.000000
 # Humanities & Liberal Arts              31913.333333
 # Education                              32350.000000
-
+df.groupby('Major_category')['Median'].mean().sort_values()
 
 # The answer to the previous question does not accurately
 # represent the median salary for a major category, because
@@ -371,7 +371,8 @@ df['HighShareWomen'].sum() / df['HighShareWomen'].size
 # associated with the major, and then compute the first five values in the new
 # column.
 # The sum of the new column should be 1.0 or very close to 1.0.
-
+df['Major_share'] = df['Total'] / df['Total'].sum()
+df['Major_share'].head(5)
 
 ###############################################################
 # In the remaining problems you can assume that df additionally
@@ -391,6 +392,10 @@ df['HighShareWomen'].sum() / df['HighShareWomen'].size
 # Arts                                   31716.044578
 # Biology & Life Science                 34446.722572
 # Business                               40942.111188
+def do_the_math(x):
+    return (x['Median']*x['Major_share']).sum()/x['Major_share'].sum()
+   
+df[['Major_category','Median','Major_share']].groupby(by='Major_category').apply(do_the_math) #18.2ms
 
 
 #@ 29
@@ -401,7 +406,10 @@ df['HighShareWomen'].sum() / df['HighShareWomen'].size
 # Agriculture & Natural Resources        0.051505
 # Arts                                   0.089105
 # Biology & Life Science                 0.070219
+def do_more_math(x):
+    return (x['Unemployment_rate'] * x['Major_share']).sum()/x['Major_share'].sum()
 
+df[['Major_category', 'Unemployment_rate', 'Major_share']].groupby(by='Major_category').apply(do_more_math)
 
 #@ 30
 # Compute the share of women by major category.  to do this
@@ -413,7 +421,10 @@ df['HighShareWomen'].sum() / df['HighShareWomen'].size
 # Arts                                   0.623694
 # Biology & Life Science                 0.592566
 # Business                               0.487205
+def math_again(x):
+    return (x['Women']/x['Total']*x['Major_share']).sum()/x['Major_share'].sum()
 
+df[['Major_category', 'Total', 'Women', 'Major_share']].groupby(by='Major_category').apply(math_again)
 
 #@ 31
 # compute the mean median salary for majors with
@@ -427,7 +438,10 @@ df['HighShareWomen'].sum() / df['HighShareWomen'].size
 # False    43633.592490
 # True     34692.752128
 # dtype: float64
+def median_salary(x):
+    return ((x['Median']*x['Major_share']).sum()/x["Major_share"].sum()).mean()
 
+df[["Median",'HighShareWomen', 'Major_share']].groupby(by='HighShareWomen').apply(median_salary)
 
 #@ 32
 # Compute the fraction of low wage jobs by major category.
@@ -437,7 +451,10 @@ df['HighShareWomen'].sum() / df['HighShareWomen'].size
 # Engineering                            0.046651
 # Computers & Mathematics                0.053965
 # Health                                 0.067504
-
+def low_wage_by_cat(x):
+    return x['Low_wage_jobs'].sum() / x['Total'].sum()
+    
+df[['Major_category', 'Low_wage_jobs', 'Total']].groupby('Major_category').apply(low_wage_by_cat).sort_values()
 
 #@ 33
 # Compute the unemployment rate by major category.
@@ -450,7 +467,10 @@ df['HighShareWomen'].sum() / df['HighShareWomen'].size
 # Arts                                   0.089233
 # Humanities & Liberal Arts              0.085852
 # Law & Public Policy                    0.085258
+def unemp_by_category(x):
+    return x['Unemployed'].sum() / (x['Unemployed'] + x['Employed']).sum()
 
+df[['Major_category', 'Employed', 'Unemployed']].groupby('Major_category').apply(unemp_by_category).sort_values(ascending=False)
 
 
 
