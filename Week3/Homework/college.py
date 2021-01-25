@@ -471,9 +471,3 @@ def unemp_by_category(x):
     return x['Unemployed'].sum() / (x['Unemployed'] + x['Employed']).sum()
 
 df[['Major_category', 'Employed', 'Unemployed']].groupby('Major_category').apply(unemp_by_category).sort_values(ascending=False)
-
-
-
-
-
-
