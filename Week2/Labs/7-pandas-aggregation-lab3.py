@@ -83,13 +83,13 @@ country_names = country_names.str[0:5]
 # Suppose we were to use only the first two letters of each country.
 # Write some code to determine if any two countries would then share
 # a name.
-True if True in country_names.str[0:1].duplicated() else False # faster
+True if True in country_names.str[0:2].duplicated() else False # faster
 #True if np.sum(country_names.str[0:1].duplicated()) > 0 else False
 
 # If you still have time, write code to determine which countries
 # do not have a unique name when only the first two characters are
 # used.  Hint: look into Pandas' Series.duplicated().
-country_names[country_names.str[0:1].duplicated()]
+country_names[country_names.str[0:2].duplicated(keep=False)]
 # =============================================================================
 # Handling times and dates
 # =============================================================================

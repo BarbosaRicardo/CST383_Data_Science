@@ -35,7 +35,7 @@ student_dist = {'Sean':8.1, 'Laura':5.4, 'Angel':12.8, 'Austin':15.0, 'Jose':22.
 # distance column.
 
 #df2 = pd.DataFrame.from_dict(student_dist, orient='index', columns=['distance'])
-#df2 = pd.DataFrame(pd.Series(student_dist), columns=['distance'])
+# df2 = pd.DataFrame(pd.Series(student_dist), columns=['distance'])
 df2 = pd.DataFrame({'distance': student_dist}, index=students)
 
 # print the dataframe you get by adding 'distance' as a new column.  
@@ -51,14 +51,14 @@ df.loc['Mariana', 'distance'] = 3.5
 # Don't use .loc or .iloc
 df[df['distance'] > 20]
 # repeat, but using .loc
-df.loc[df['distance'] > 20,'mpg':'distance']
+df.loc[df['distance'] > 20]
 # print the underlying 2D numpy array containing the dataframe data
 # (Hint: you use .index on a data frame to get the row index; how do
 # you get the data?)
 print(df.values)
 # add a new column, 'gas', which shows the number of
 # gallons of gas needed for a round-trip drive to CSUMB
-df['gas'] = pd.Series(df['distance']*2 / df['mpg'])
+df['gas'] = df['distance']*2 / df['mpg']
 # print the first two rows of the data frame using .iloc
 print(df.iloc[0:2])
 # If you still have time, redo the problem above that asks you

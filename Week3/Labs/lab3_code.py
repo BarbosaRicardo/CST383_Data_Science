@@ -44,12 +44,12 @@ both_girls = np.sum((child1 + child2) == (TWO_GIRLS)) # faster
 #%%
 ## Lab3 #10
 # print((both_girls/SAMPLE_SIZE) / (one_girl/SAMPLE_SIZE))
-print("P(two girls | one girl) = ", both_girls / one_girl)
+print("P(two girls | one girl) =", both_girls / one_girl)
 
 #%%
 ## Lab3 #11
 elder_girl = np.sum(child1 == GIRL)
-print("P(two girls | there is an elder girl) = ", both_girls / elder_girl)
+print("P(two girls | there is an elder girl) =", both_girls / elder_girl)
 
 #%%
 ## Lab3 #12

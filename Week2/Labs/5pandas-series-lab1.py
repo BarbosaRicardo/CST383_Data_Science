@@ -36,7 +36,7 @@ print(high_mpg)
 # print the names of the students who have cars with mpg
 # greater than 30.0.  
 # hint: what's in the index of high_mpg?
-print(high_mpg)
+print(high_mpg.index)
 # create a NumPy array x from the data values in series mpg
 x = np.array(mpg.values)
 # write code to make sure that x is really a numpy array,
