@@ -107,19 +107,19 @@ print('Problem 5:\n', pd.crosstab(has_measles, tests_positive))
 # Using the has_measles and tests_positive arrays, compute the probability 
 # that a person has measles given positive test results.
 # (expression)
-(np.sum(tests_positive[has_measles]) / n) / (np.sum(tests_positive) / n)
+np.sum(tests_positive[has_measles]) / np.sum(tests_positive)
 
 #@ 7
 # Using the has_measles and tests_positive arrays, compute the probability 
 # that a person has does not have measles given negative test results.
 # (expression)
-(np.sum(~tests_positive[~has_measles]) / n) / (np.sum(~tests_positive) / n)
+np.sum(~tests_positive[~has_measles]) / np.sum(~tests_positive)
 
 #@ 8
 # Using the has_measles and tests_positive arrays, compute the probability 
 # that a person has measles given negative test results.
 # (expression)
-(np.sum(~tests_positive[has_measles]) / n) / (np.sum(~tests_positive) / n)
+np.sum(~tests_positive[has_measles]) / np.sum(~tests_positive)
 
 #@ 9
 # Create a data frame with two columns:
@@ -146,7 +146,7 @@ def sim_p_measles_if_pos(p_measles,p_pos_if_measles, p_pos_if_okay):
     tests_positive[has_measles] = np.random.choice([True,False],size=num_measles,p=[p_pos_if_measles, 1-p_pos_if_measles])
     tests_positive[~has_measles] = np.random.choice([True,False],size=n-num_measles,p=[p_pos_if_okay, 1-p_pos_if_okay])
     # Return value
-    return (np.sum(tests_positive[has_measles]) / n) / (np.sum(tests_positive) / n)
+    return np.sum(tests_positive[has_measles]) / np.sum(tests_positive)
 
 
 # test the function on the question at the top of the assignment
