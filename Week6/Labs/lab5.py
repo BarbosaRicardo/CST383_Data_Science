@@ -12,17 +12,26 @@ df = pd.read_csv(
 # %%
 # 3. We will try to predict whether the tuition of a college based on the number of students from the top 10 percent of their high school class and the number of undergraduates..  Create a 2D NumPy array X from the 'Top10perc' and 'F.Undergrad' columns of df.
 
-# Predictors
+# Predictors (what we are using to build our model)
 x = df[['Top10perc', 'F.Undergrad']].values
 # %%
 # 4. Create a 1D NumPy array y from the 'Outstate' column of df.
 
-# Target
+# Target (what we want to predict)
 y = df['Outstate'].values
 
 # %%
 #  5. Split the data into training and test sets, with 30% of the data in the test set.  Use names X_train, y_train, X_test, y_test.
 
+'''
+- x_train: our predictors we are using to train the model
+- x_test: the predictors we are using to test our trained model
+- y_train: the targets we are using to train our model
+- y_test: the targets we are using to test our trained model
+
+From what I understand, our algorithm will look at how the predictors and the target affect each other or look for the patter?
+Then, we'll pass our x_test into the trained model and compare that output to what it should have been or the actual (y_test). 
+'''
 x_train, x_test, y_train, y_test = train_test_split(
     x, y, test_size=0.3, random_state=23)
 # %%
