@@ -4,3 +4,4 @@
 
 - Labs: Learn Numpy Syntax
 - HW: Showcase Numpy Knowledge
+- Initial commit test
